@@ -69,28 +69,37 @@ var BookList = function(books){ //books is an array
 
 }; //end of the booklist
 
+function displayBooks(arrayOfBooks) {
+
+    var bookDisplay = document.getElementById("container");
+
+    var ul = document.createElement("ul");
+    bookDisplay.appendChild(ul);
+
+    for (var i = 0; i < arrayOfBooks.length; i++){
+        var li = document.createElement("li");
+        var bookTitle = arrayOfBooks[i].bookTitle;
+        var bookAuthor = arrayOfBooks[i].author;
+        li.innerHTML = bookTitle +", written by " + bookAuthor;
+        ul.appendChild(li);
+    }
+
+    document.body.appendChild(bookDisplay);
+}
+
 var harryPotter = new Book("Harry Potter & the Sorcerer's Stone", "Fiction", "J.K.Rowling", true, "01 Sep 1998");
 var theBible = new Book("The Bible", "Religion", "God", false);
 var warAndPeace = new Book("War And Peace", "Fiction", "Leo Tolstoy", false);
 var pridePrejudice = new Book("Pride and Prejudice", "Fiction", "Jane Austen", true, "01 Jan 2008");
+var foodMatters = new Book("Food Matters", "Non-Fiction", "Michael Pollan", true, "01 Jan 2013");
+var theHobbit = new Book("The Hobbit", "Fiction", "JRR Tolkien", false);
+
+
 
 myBooks = [];
-myBooks.push(harryPotter, warAndPeace, theBible, pridePrejudice);
+myBooks.push(harryPotter, warAndPeace, theBible, pridePrejudice, foodMatters, theHobbit);
 var micasBookList = new BookList(myBooks);
-//Test adding a book
-var foodMatters = new Book("Food Matters", "Non-Fiction", "Michael Pollan", true, "01 Jan 2013");
-micasBookList.add(foodMatters);
 
 
-console.log("My last book: ", micasBookList.lastBook());
-console.log("My current book: ",micasBookList.currentBook());
-console.log("My next book: ", micasBookList.nextBook());
 
-console.log("**************************");
-micasBookList.finishCurrentBook();
-
-
-console.log("My last book: ", micasBookList.lastBook());
-console.log("My current book: ",micasBookList.currentBook());
-console.log("My next book: ", micasBookList.nextBook());
-
+displayBooks(micasBookList.bookShelf);
