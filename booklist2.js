@@ -1,4 +1,4 @@
-var Book = function(title, genre, author, read, readDate) {
+var Book = function(title, genre, author,read, readDate) {
     this.bookTitle = title;
     this.genre = genre;
     this.author = author;
@@ -41,7 +41,7 @@ var BookList = function(books){ //books is an array
         }
     };
 
-    this.add = function(oneBook) {
+    this.addBook = function(oneBook) {
         this.bookShelf.push(oneBook);
         if (oneBook.read === true) {
             this.booksRead.push(oneBook);
@@ -64,7 +64,7 @@ var BookList = function(books){ //books is an array
     this.bookShelf = [];
 
     for (var i = 0; i < books.length; i++) {
-        this.add(books[i]);
+        this.addBook(books[i]);
     }
 
 }; //end of the booklist
@@ -87,6 +87,11 @@ function displayBooks(arrayOfBooks) {
     document.body.appendChild(bookDisplay);
 }
 
+var submitButton = document.getElementById('submit');
+function onButtonClick() {
+    submitButton.innerHTML =  micasBookList.addBook();
+}
+
 var harryPotter = new Book("Harry Potter & the Sorcerer's Stone", "Fiction", "J.K.Rowling", true, "01 Sep 1998");
 var theBible = new Book("The Bible", "Religion", "God", false);
 var warAndPeace = new Book("War And Peace", "Fiction", "Leo Tolstoy", false);
@@ -99,7 +104,9 @@ var theHobbit = new Book("The Hobbit", "Fiction", "JRR Tolkien", false);
 myBooks = [];
 myBooks.push(harryPotter, warAndPeace, theBible, pridePrejudice, foodMatters, theHobbit);
 var micasBookList = new BookList(myBooks);
-
+var testBook = new Book("Book Title", "Fiction", "Mica", "true", "09/30/2013");
+console.log(testBook);
 
 
 displayBooks(micasBookList.bookShelf);
+submitButton.addEventListener('click', onButtonClick, false);

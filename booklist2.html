@@ -7,10 +7,31 @@
     <body>
         <h1>My Book List</h1>
         <div id ="container">
+            <div id="form">
+                <form action="">
 
+                    <label for="getAuthor">Book Author:</label>
+                    <input type="text" name="getAuthor" /><br>
+
+                    <label for="getTitle">Book Title:</label>
+                    <input type="text" name="getTitle" /><br>
+
+                    <label for="getGenre">Genre:</labeL>
+                    <input type="text" name="getGenre" /><br>
+
+                    <label for="isRead">Have you already read it?</label>
+                    <input type="radio" id="isRead" />(Yes.)<br>
+
+                    <label for="readDate">Date read: </labeL>
+                    <input type="text" id="readDate" />(mm/dd/yyyy)<br>
+                    
+                    <button id="submit">Submit</button>
+
+                </form>
+            </div>
+        
         </div>
 
-        <script src="booklist2.js">
-        </script>
+        <script src="booklist2.js"></script>
     </body>
 </html>
